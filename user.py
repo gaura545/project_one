@@ -22,13 +22,13 @@ if n == 'a':
             temp = list(temp)
 
         if temp is None:
-            print('Invalid username')
+            print('Invalid')
 
         elif temp[0][1] == password:
             main.main()
             break
         else:
-            print('Wrong password')
+            print('Wrong')
     connection.commit()
 else:
     connection.commit()
