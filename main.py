@@ -20,7 +20,7 @@ def question():
     connection.commit()
     
 def remove_question(self,delQ):
-        sql = "DELETE FROM qna1 WHERE question = %s"
+        sql = "DELETE question = %s"
         val = (delQ,)
         mycursor.execute(sql,val)
         mydb.commit()
