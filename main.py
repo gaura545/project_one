@@ -18,6 +18,12 @@ def question():
     mycursor.execute("insert into questions values('%s','%s','%s','%s','%s','%s','%s') ;" % (
         ques, opa, opb, opc, opd, correct, topic, level))
     connection.commit()
+    
+def remove_question(self,delQ):
+        sql = "DELETE FROM qna1 WHERE question = %s"
+        val = (delQ,)
+        mycursor.execute(sql,val)
+        mydb.commit()
 
 def student_marks():
     mycursor.execute("select * from details ;")
