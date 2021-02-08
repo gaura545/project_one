@@ -5,8 +5,9 @@ import mysql.connector
 connection = mysql.connector.connect(user='root',password='gaurav',host='localhost',database='quiz')
 mycursor = connection.cursor()
 
-def add_question():
+def question():
 
+    level = input("Enter the dificulty level")
     topic = input("Enter the topic name: ")
     ques = input("Enter the question: ")
     opa = input("Enter option a: ")
@@ -15,10 +16,10 @@ def add_question():
     opd = input("Enter option d: ")
     correct = input("Correct option: ")
     mycursor.execute("insert into questions values('%s','%s','%s','%s','%s','%s','%s') ;" % (
-        ques, opa, opb, opc, opd, correct, topic))
+        ques, opa, opb, opc, opd, correct, topic, level))
     connection.commit()
 
-def print_student_marks():
+def student_marks():
     mycursor.execute("select * from details ;")
     print('MARKS:\nName\t\tTopic\t\tMarks\t\tDate')
     for i in mycursor.fetchall():
@@ -37,9 +38,9 @@ def main():
             connection.commit()
 
         elif n == '2':
-            add_question()
+            question()
             connection.commit()
 
         elif n == '3':
-            print_student_marks()
+            student_marks()
             connection.commit()
