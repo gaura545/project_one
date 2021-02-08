@@ -3,10 +3,10 @@ import mysql.connector
 connection = mysql.connector.connect(user='root',password='gaurav',host='localhost',database='quiz')
 mycursor = connection.cursor()
 
-def run_quiz(name):
+def quiz(name):
     marks = 0
     mycursor.execute("select distinct(topic) from questions;")
-    print('Available topics are: ')
+    print('topics are: ')
     for i in mycursor.fetchall():
         print(i[0], end='\t')
     print()
@@ -16,7 +16,7 @@ def run_quiz(name):
     connection.commit()
 
     if len(temp)==0:
-        print('Invalid topic selected')
+        print('Invalid')
     else:
 
         for i in temp:
@@ -29,8 +29,8 @@ def run_quiz(name):
         mycursor.execute("insert into details values ('%s','%s','%d','%s');" %
                   (name, topic, marks, datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
         connection.commit()
-        print("You obtained %d marks" % marks)
+        print("obtained %d marks" % marks)
 
 def main():
     name = input('Enter your name: ')
-    run_quiz(name)
+    quiz(name)
