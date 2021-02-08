@@ -1,5 +1,5 @@
   
-import user_login
+import user
 import students
 import mysql.connector
 connection = mysql.connector.connect(user='root',password='gaurav',host='localhost',database='quiz')
